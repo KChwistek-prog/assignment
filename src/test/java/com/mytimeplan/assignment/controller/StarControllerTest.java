@@ -1,6 +1,8 @@
-package com.mytimeplan.assignment;
+package com.mytimeplan.assignment.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mytimeplan.assignment.repository.Star;
+import com.mytimeplan.assignment.service.StarService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -17,7 +19,8 @@ import java.util.Map;
 
 import static org.mockito.ArgumentMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(StarController.class)
 class StarControllerTest {
@@ -90,11 +93,11 @@ class StarControllerTest {
 
     @Test
     void findClosestStars() throws Exception {
-        Star star1 = new Star("Star A",5L);
+        Star star1 = new Star("Star A", 5L);
         star1.setId(1L);
 
 
-        Star star2 = new Star("Star B",3L);
+        Star star2 = new Star("Star B", 3L);
         star2.setId(2L);
 
         List<Star> stars = Arrays.asList(star1, star2);
@@ -115,7 +118,7 @@ class StarControllerTest {
 
     @Test
     void getNumberOfStarsByDistances() throws Exception {
-        Star star1 = new Star("Star A",50L);
+        Star star1 = new Star("Star A", 50L);
         star1.setId(1L);
 
 
@@ -136,7 +139,7 @@ class StarControllerTest {
     }
 
     @Test
-    void getUniqueStars() throws Exception{
+    void getUniqueStars() throws Exception {
         Star star1 = new Star("Star A", 5L);
         star1.setId(1L);
 

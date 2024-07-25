@@ -1,5 +1,7 @@
-package com.mytimeplan.assignment;
+package com.mytimeplan.assignment.controller;
 
+import com.mytimeplan.assignment.repository.Star;
+import com.mytimeplan.assignment.service.StarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +39,16 @@ public class StarController {
         try {
             var updatedStar = starService.updateStar(id, star);
             return new ResponseEntity<>(updatedStar, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteStar(@PathVariable Long id) {
+        try {
+            starService.deleteStar(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
