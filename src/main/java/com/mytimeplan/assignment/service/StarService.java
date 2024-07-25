@@ -1,5 +1,7 @@
-package com.mytimeplan.assignment;
+package com.mytimeplan.assignment.service;
 
+import com.mytimeplan.assignment.repository.Star;
+import com.mytimeplan.assignment.repository.StarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,8 +32,8 @@ public class StarService {
         return starRepository.save(star);
     }
 
-    public void deleteStar(Long id){
-        if(!starRepository.existsById(id)){
+    public void deleteStar(Long id) {
+        if (!starRepository.existsById(id)) {
             throw new NoSuchElementException("Star not found");
         }
         starRepository.deleteById(id);

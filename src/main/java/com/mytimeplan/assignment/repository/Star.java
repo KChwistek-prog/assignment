@@ -1,10 +1,9 @@
-package com.mytimeplan.assignment;
+package com.mytimeplan.assignment.repository;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 
 import java.util.Objects;
 
@@ -15,12 +14,12 @@ public class Star {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String Name;
-    private Long Distance;
+    private String name;
+    private Long distance;
 
     public Star(String name, Long distance) {
-        Name = name;
-        Distance = distance;
+        this.name = name;
+        this.distance = distance;
     }
 
     public Long getId() {
@@ -32,19 +31,19 @@ public class Star {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public Long getDistance() {
-        return Distance;
+        return distance;
     }
 
     public void setDistance(Long distance) {
-        Distance = distance;
+        this.distance = distance;
     }
 
     @Override
@@ -52,19 +51,19 @@ public class Star {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Star star = (Star) o;
-        return Objects.equals(Name, star.Name) && Objects.equals(Distance, star.Distance);
+        return Objects.equals(name, star.name) && Objects.equals(distance, star.distance);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Name, Distance);
+        return Objects.hash(name, distance);
     }
 
     @Override
     public String toString() {
         return "Star{" +
-                "Name='" + Name + '\'' +
-                ", Distance=" + Distance +
+                "Name='" + name + '\'' +
+                ", Distance=" + distance +
                 '}';
     }
 }

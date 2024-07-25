@@ -1,12 +1,13 @@
-package com.mytimeplan.assignment;
+package com.mytimeplan.assignment.service;
 
+import com.mytimeplan.assignment.repository.Star;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class StarServiceTest {
     private final StarService starService = new StarService();
@@ -78,7 +79,6 @@ class StarServiceTest {
 
         //Then
         assertEquals(1, result.get(73640000000000L));
-
     }
 
     @Test
@@ -92,6 +92,5 @@ class StarServiceTest {
         //Then
         assertNotEquals(result, stars);
         assertEquals(10, result.size());
-
     }
 }
