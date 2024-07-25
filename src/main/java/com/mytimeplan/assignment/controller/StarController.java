@@ -15,8 +15,13 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping("/stars")
 public class StarController {
+
+    private final StarService starService;
+
     @Autowired
-    private StarService starService;
+    public StarController(StarService starService) {
+        this.starService = starService;
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Star> getStarById(@PathVariable Long id) {

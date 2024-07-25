@@ -9,12 +9,17 @@ import java.util.*;
 
 @Service
 public class StarService {
+    private static final long DISTANCE_INTERVAL = 10000000000L;
 
-
-    @Autowired
     private StarRepository starRepository;
 
-    private static final long DISTANCE_INTERVAL = 10000000000L;
+    @Autowired
+    public StarService(StarRepository starRepository) {
+        this.starRepository = starRepository;
+    }
+
+    public StarService() {
+    }
 
     public Star getStarById(Long id) {
         return starRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Star not found"));
