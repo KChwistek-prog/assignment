@@ -33,13 +33,13 @@ public class StarController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Star> addNewStar(@RequestBody Star star) {
         var newStar = starService.addNewStar(star);
         return new ResponseEntity<>(newStar, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Star> updateStar(@PathVariable Long id, @RequestBody Star star) {
         try {
             var updatedStar = starService.updateStar(id, star);
@@ -49,7 +49,7 @@ public class StarController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteStar(@PathVariable Long id) {
         try {
             starService.deleteStar(id);
